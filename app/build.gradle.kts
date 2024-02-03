@@ -56,14 +56,10 @@ dependencies {
     implementation(libs.retrofit.networking)
     implementation(libs.retrofit.gson.converter)
     implementation(libs.retrofit.adapter)
-    implementation(libs.retrofit.adapter)
+    implementation(libs.retrofit.logging.interceptor)
     //endregion
     //region imaging
     implementation (libs.picaso.imaging)
-    //endregion
-    // region navigation
-    implementation (libs.androidx.navigation)
-    implementation (libs.androidx.navigation.ui)
     //endregion
     //region Di
     implementation(libs.koin.di)
