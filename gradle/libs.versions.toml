@@ -19,6 +19,7 @@ targetSdk = "34"
 versionCode="1"
 versionName="1.0"
 jvmTarget = "1.8"
+lottieVersion = "3.4.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
@@ -35,6 +36,7 @@ serialisation = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization
 junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
 androidx-test-ext = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestExt" }
 androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }
+lottie_animation = {group="com.airbnb.android",name ="lottie",version.ref="lottieVersion"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }

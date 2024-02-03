@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.appcompat)
     implementation(libs.android.material)
+    implementation(libs.lottie.animation)
     //endregion
     //region network
     implementation(libs.retrofit.networking)

@@ -15,12 +15,16 @@
             name="mealsVisiblity"
             type="boolean" />
 
+        <variable
+            name="errorVisiblity"
+            type="boolean" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="?attr/colorBackgroundVariant"
         android:layout_height="match_parent"
+        android:background="?attr/colorBackgroundVariant"
         tools:context=".ui.mealsscreen.MealsActivity">
 
         <ProgressBar
@@ -32,6 +36,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="@{errorVisiblity? View.VISIBLE : View.GONE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/meal_error" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMeals"
