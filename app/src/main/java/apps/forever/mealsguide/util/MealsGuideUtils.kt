@@ -2,6 +2,7 @@ package apps.forever.mealsguide.util
 
 import android.content.Context
 import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 
 /**
  * Created by Anil Kumar Reddy
@@ -10,6 +11,6 @@ import android.net.ConnectivityManager
 
 fun isNetConnected(context: Context): Boolean {
     val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-    val info = connectivityManager.activeNetworkInfo
-    return info != null && info.isAvailable && info.isConnected
+    val networkCapabilities = connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+    return networkCapabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
 }
