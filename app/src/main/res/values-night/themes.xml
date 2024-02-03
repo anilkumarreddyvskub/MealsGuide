@@ -1,7 +1,23 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.MealsGuide" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.MealsGuide" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorOnBackground">@color/black</item>
+        <item name="colorBackgroundVariant">@color/black</item>
+        <item name="colorOnPrimaryText">@color/white</item>
     </style>
-</resources>
+    <style name="body_regular" parent="Base.Theme.MealsGuide">
+        <item name="android:fontFamily">@font/nunito_sans_regular</item>
+        <item name="android:textSize">@dimen/size_15_sp</item>
+        <item name="lineHeight">22.6sp</item>
+        <item name="android:justificationMode" tools:targetApi="o">inter_word</item>
+        <item name="android:lineSpacingExtra">5.6sp</item>
+        <item name="android:textColor">?attr/colorOnPrimaryText</item>
+    </style>
+
+    <style name="header_semi_bold" parent="Base.Theme.MealsGuide">
+        <item name="android:fontFamily">@font/nunito_sans_semibold</item>
+        <item name="android:textSize">@dimen/size_25_sp</item>
+        <item name="android:textColor">?attr/colorOnPrimaryText</item>
+    </style></resources>

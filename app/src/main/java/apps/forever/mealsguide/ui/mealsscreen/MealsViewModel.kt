@@ -1,4 +1,4 @@
-package apps.forever.mealsguide.ui
+package apps.forever.mealsguide.ui.mealsscreen
 
 import androidx.lifecycle.ViewModel
 import apps.forever.mealsguide.data.dto.MealsDto
@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.flow
  * Created by Anil Kumar Reddy
  * on 03,February,2024
  */
-class MainViewModel(private val mealsUseCase: MealsUseCase) :ViewModel(){
+class MealsViewModel(private val mealsUseCase: MealsUseCase) :ViewModel(){
     fun getMeals() = flow {
         emit(NetworkResponse.Loading(null))
         try {
@@ -29,7 +29,7 @@ class MainViewModel(private val mealsUseCase: MealsUseCase) :ViewModel(){
                 emit(NetworkResponse.Success(errorResponse))
             }
         } catch (e: Exception) {
-            throw ApiException("Error occurred")
+            throw ApiException(e.message)
         }
     }.catch {
         emit(NetworkResponse.Error(ApiException(it.message)))

@@ -3,7 +3,8 @@ package apps.forever.mealsguide.di
 import apps.forever.mealsguide.data.MealsApi
 import apps.forever.mealsguide.domain.use_cases.MealsUseCase
 import apps.forever.mealsguide.domain.use_cases.MealsUseCaseImpl
-import apps.forever.mealsguide.ui.MainViewModel
+import apps.forever.mealsguide.ui.mealsscreen.MealsViewModel
+import apps.forever.mealsguide.ui.mealsscreen.MealsAdapter
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -14,7 +15,7 @@ import retrofit2.Retrofit
  */
 val mealsModule = module {
     viewModel {
-        MainViewModel(get())
+        MealsViewModel(get())
     }
     single<MealsApi> {
         get<Retrofit>().create(MealsApi::class.java)
@@ -22,5 +23,9 @@ val mealsModule = module {
 
     single<MealsUseCase> {
         MealsUseCaseImpl(get())
+    }
+
+    factory { params ->
+        MealsAdapter(params.get(),params.get())
     }
 }
