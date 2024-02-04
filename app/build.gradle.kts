@@ -18,13 +18,34 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        getByName("debug") {
+            keyAlias = "mg_debug"
+            keyPassword = "mg@20240204!"
+            storeFile = file("../keys/mg_debug.jks")
+            storePassword = "mg@20240204!"
+        }
+        create("release") {
+            keyAlias = System.getenv("SIGNING_KEY_ALIAS")
+            keyPassword = System.getenv("SIGNING_KEY_PASSWORD")
+            storeFile = file("../keys/mg_rel.jks")
+            storePassword = System.getenv("SIGNING_STORE_PASSWORD")
+        }
+    }
+
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        debug {
+            isMinifyEnabled=false
+            versionNameSuffix = "-DEBUG"
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
     compileOptions {
@@ -37,6 +58,18 @@ android {
     buildFeatures {
         dataBinding = true
 
+    }
+
+    android.applicationVariants.all {
+        outputs.all {
+            if (outputFile != null && outputFile.name.endsWith(".apk")) {
+                (this as com.android.build.gradle.internal.api.BaseVariantOutputImpl).outputFileName =
+                    outputFileName.replace(
+                        "app",
+                        "mealsGuide_V_${libs.versions.versionName.get()}(${libs.versions.versionCode.get()})"
+                    )
+            }
+        }
     }
 }
 
